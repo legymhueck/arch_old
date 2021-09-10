@@ -1,0 +1,1 @@
+nvidia-settings --assign CurrentMetaMode="DVI-I-1: nvidia-auto-select +3120+480 {ForceCompositionPipeline=On}, DVI-D-0: nvidia-auto-select +1920+0 {rotation=left} {ForceCompositionPipeline=On}, HDMI-0: nvidia-auto-select +0+480 {ForceCompositionPipeline=On}"

@@ -1,0 +1,157 @@
+#echo -e -n "\x1b[\x30 q" # changes to blinking block
+#echo -e -n "\x1b[\x31 q" # changes to blinking block also
+#echo -e -n "\x1b[\x32 q" # changes to steady block
+#echo -e -n "\x1b[\x33 q" # changes to blinking underline
+#echo -e -n "\x1b[\x34 q" # changes to steady underline
+#echo -e -n "\x1b[\x35 q" # changes to blinking bar
+echo -e -n "\x1b[\x36 q" # changes to steady bar
+
+# source ~/.bash_profile
+
+eval "$(starship init bash)"
+
+# Powerline
+#powerline-daemon -q
+#POWERLINE_BASH_CONTINUATION=1
+#POWERLINE_BASH_SELECT=1
+#. /usr/share/powerline/bindings/bash/powerline.sh
+
+# remap caps to escape
+#setxkbmap -option caps:escape
+# swap escape and caps
+#setxkbmap -option caps:swapescape
+
+# swap keys
+#keycode 1 = Caps_Lock
+#keycode 58 = Escape
+alias virt_connect='virt-viewer --connect qemu:///system --wait'
+alias cache_size='du -sh ~/.cache'
+alias cache_delete='du -sh ~/.cache'
+alias journal_size='doas du -sh /var/log/journal'
+alias journal_delete='doas journalctl --vacuum-time=2weeks' # delete everything that is older than 2 weeks
+alias doas='doas'
+alias cdwm='cd $HOME/.config/dwm && doas make clean install'
+alias vl='virsh list --all'
+alias vs='virsh start '
+alias vv='virt-viewer -f '
+alias s='startx'
+alias v='nvim'
+alias vi='nvim'
+alias cpuinfo='watch grep \"cpu MHz\" /proc/cpuinfo'
+alias cups='doas systemctl restart --now cups'
+alias powersave='doas cpupower frequency-set -g powersave'
+alias ondemand='doas cpupower frequency-set -g ondemand'
+alias interrupts='grep . -r /sys/firmware/acpi/interrupts/gpe*'
+alias bootStick='screen qemu-system-x86_64 -enable-kvm -m 4G -bios /usr/share/edk2-ovmf/x64/OVMF_CODE.fd -drive file=/dev/sdb,format=raw'
+alias mci='doas make clean install'
+alias torOn='torphantom --start'
+alias torOff='torphantom --stop'
+alias bfree='doas btrfs filesystem usage /'
+alias bdefrag='doas btrfs filesystem defragment -r /'
+alias bscrub='doas btrfs scrub start /'
+alias bscrubStatus='doas btrfs scrub status /'
+alias bbalance='doas btrfs balance start /'
+alias bbalanceStatus='doas btrfs balance status /'
+alias delGrub='doas dd if=/dev/zero bs=446 count=1'
+alias delDisk='doas dd if=/dev/zero bs=512 count=1'
+alias freq='watch grep \"cpu MHz\" /proc/cpuinfo'
+alias ls='ls -lsa --color=auto --group-directories-first'
+alias orphans='doas pacman -Rns $(pacman -Qdtq)'
+alias p='doas pacman -S --needed --noconfirm'
+alias pu='doas pacman -Syu && paru -Syu'
+alias u='doas pacman -U'
+alias v128='doas veracrypt -t --fs-options="iocharset=utf8" /run/media/michael/128GB/Documents/le /home/michael/mount/v128/'
+alias v256='doas veracrypt -t --fs-options="iocharset=utf8" /run/media/michael/Le/PortableApps/0/le /home/michael/mount/v256/'
+alias keys='gpg --keyserver keys.gnupg.net --recv-keys'
+alias archiso='doas mkarchiso -v -w /tmp/archiso-tmp /root/archiso'
+alias gitFirst='git config --global user.name "legymhueck" && git config --global user.email le.gymhueck@gmail.com'
+alias libvirt='doas systemctl restart libvirtd && doas virsh net-start default'
+alias bat='osdbattery &'
+alias 15G='doas mount -t cifs //192.168.2.4/15G /home/michael/mount/15G -o username=michael,uid=60102,gid=60102,vers=2.0'
+alias df='df -h'
+alias unlock='doas rm /var/lib/pacman/db.lck'
+alias free='free -mt'
+alias wget='wget -c'
+alias userlist='cut -d: -f1 /etc/passwd'
+alias pacman='doas pacman --color auto'
+alias psa='ps auxf'
+alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
+alias update-grub='doas grub-mkconfig -o /boot/grub/grub.cfg'
+alias update-fc='doas fc-cache -fv'
+alias hw='hwinfo --short'
+alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
+alias mirror_update='doas reflector -c Germany -a 12 --sort rate --save /etc/pacman.d/mirrorlist'
+
+#mounting the folder Public for exchange between host and guest on virtualbox
+alias vbm='doas /usr/local/bin/arcolinux-vbox-share'
+
+#youtube-dl
+alias yta-aac="youtube-dl --extract-audio --audio-format aac "
+alias yta-best="youtube-dl --extract-audio --audio-format best "
+alias yta-flac="youtube-dl --extract-audio --audio-format flac "
+alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
+alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
+alias yta-opus="youtube-dl --extract-audio --audio-format opus "
+alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
+alias yta-wav="youtube-dl --extract-audio --audio-format wav "
+alias ytv-best="youtube-dl -f bestvideo+bestaudio "
+alias yt='youtube-dl -ic' # errors and resume
+
+#Recent Installed Packages
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
+
+#Cleanup orphaned packages
+alias cleanup='doas pacman -Rns $(pacman -Qtdq)'
+
+#get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
+
+#vim for important configuration files
+alias vpacman="doas nano /etc/pacman.conf"
+alias vgrub="doas nano /etc/default/grub"
+alias vmkinitcpio="doas nano /etc/mkinitcpio.conf"
+alias vmirrorlist="doas nano /etc/pacman.d/mirrorlist"
+alias vconfgrub="doas nano /boot/grub/grub.cfg"
+
+#gpg
+#verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+#receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+
+#maintenance
+alias big="expac -H M '%m\t%n' | sort -h | nl"
+
+# upload systeminfo of your computer
+alias probe="doas -E hw-probe -all -upload"
+
+# # ex = EXtractor for all kinds of archives
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   unzstd $1    ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+#if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#	  exec startx
+#fi

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doublecmd>
+  <History>
+    <Navigation>
+      <Item>/home/michael/VMs/</Item>
+      <Item>/home/michael/</Item>
+      <Item>/home/michael/.local/</Item>
+      <Item>/home/michael/.local/state/</Item>
+      <Item>/home/michael/.local/state/pipewire/</Item>
+      <Item>/home/michael/.local/share/</Item>
+      <Item>/home/michael/.local/share/Trash/</Item>
+      <Item>/run/media/michael/Ventoy/</Item>
+      <Item>/</Item>
+      <Item>/run/media/michael/Le/Mailspring/</Item>
+      <Item>/home/michael/.config/Mailspring/</Item>
+      <Item>/run/media/michael/LE/</Item>
+      <Item>/home/michael/O/01-E/</Item>
+      <Item>/home/michael/.config/</Item>
+      <Item>/home/michael/O/01-E/Unterrichtsmanager/</Item>
+      <Item>/home/michael/O/01-E/Unterrichtsmanager/Access 4/</Item>
+      <Item>/home/michael/O/01-E/Unterrichtsmanager/Access 4/uma/</Item>
+      <Item>/home/michael/O/</Item>
+      <Item>/home/michael/O/Michael @ gymnasium-hueckelhoven.de/</Item>
+      <Item>/home/michael/O/Apps/</Item>
+      <Item>/home/michael/Downloads/Pfeifer &amp; Langen IT-Solutions KG - Ihr Fullservice IT-Dienstleister._files/</Item>
+      <Item>/home/michael/Downloads/</Item>
+      <Item>/run/media/michael/702F-3FE4/</Item>
+      <Item>/home/</Item>
+      <Item>/run/media/michael/LE/0-Druck/2021-09-02/</Item>
+      <Item>/run/media/michael/LE/0-Druck/</Item>
+      <Item>/home/michael/mount/homed-mounted/michael/VMs/</Item>
+      <Item>/home/michael/mount/homed-mounted/michael/</Item>
+      <Item>/home/michael/mount/homed-mounted/</Item>
+    </Navigation>
+    <CommandLine/>
+    <FileMask>
+      <Item>mailsp</Item>
+      <Item>2200*.data</Item>
+      <Item>22005</Item>
+    </FileMask>
+    <SearchText/>
+    <SearchTextPath/>
+    <ReplaceText/>
+    <ReplaceTextPath/>
+    <CreateDirectories>
+      <Item>Mailspring</Item>
+      <Item>VMs</Item>
+    </CreateDirectories>
+    <SearchDirectories>
+      <Item>/home/michael/</Item>
+      <Item>/home/michael/O/</Item>
+    </SearchDirectories>
+    <SearchExcludeFiles/>
+    <SearchExcludeDirectories/>
+  </History>
+</doublecmd>
