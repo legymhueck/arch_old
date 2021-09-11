@@ -11,7 +11,7 @@ mount /dev/sda2 /mnt
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 
-pacstrap /mnt base linux linux-firmware linux-headers efibootmgr sudo opendoas vim networkmanager git
+pacstrap /mnt base base-devel linux linux-firmware linux-headers efibootmgr sudo vim networkmanager git
 
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt

@@ -24,6 +24,7 @@ editor 0" > /boot/loader/loader.conf
 
 echo "title ArchLinux
 linux /vmlinuz-linux
+# initrd /intel-ucode.img
 initrd /initramfs-linux.img
 options root=/dev/sda2 quiet rw lang=de locale=de_DE.UTF-8" > /boot/loader/entries/arch.conf
 
@@ -31,8 +32,10 @@ systemctl enable NetworkManager
 systemctl enable systemd-homed
 systemctl enable acpid
 
-sed -i '/%wheel ALL=(ALL) ALL/s/^#//g' /etc/sudoers
-echo 'permit nopass keepenv :wheel' > /etc/doas.conf
+# sed -i '/%wheel ALL=(ALL) ALL/s/^#//g' /etc/sudoers
+sed -i '/%wheel ALL=(ALL) NOPASSWD: ALL/s/^#//g' /etc/sudoers
+# echo 'permit nopass keepenv :wheel' > /etc/doas.conf
 echo 'vm.swappiness=10' | tee /etc/sysctl.d/99-swappiness.conf
+sed -i '/BUILDDIR=\/tmp\/makepkg/s/^#//g' /etc/makepkg.conf
 
 umount -R /mnt

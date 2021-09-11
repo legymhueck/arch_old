@@ -36,8 +36,9 @@ systemctl enable systemd-networkd
 # avahi-daemon
 
 # sed -i '/%wheel ALL=(ALL) ALL/s/^#//g' /etc/sudoers
+sed -i '/%wheel ALL=(ALL) NOPASSWD: ALL/s/^#//g' /etc/sudoers
 sed -i '/BUILDDIR=\/tmp\/makepkg/s/^#//g' /etc/makepkg.conf
-echo 'permit nopass keepenv :wheel' > /etc/doas.conf
+# echo 'permit nopass keepenv :wheel' > /etc/doas.conf
 echo 'vm.swappiness=10' | tee /etc/sysctl.d/99-swappiness.conf
 
 echo "tmpfs                                           /tmp                   tmpfs   rw,nodev,nosuid 0  0
