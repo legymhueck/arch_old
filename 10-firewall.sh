@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sudo pacman -S --needed --noconfirm iptables-nft
 # Firewall
 echo "Firewall"
 sudo pacman -S --needed --noconfirm firewalld ipset ebtables

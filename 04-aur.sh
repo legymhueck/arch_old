@@ -3,6 +3,8 @@
 #paru -S --needed --noconfirm brave-bin simplenote-electron-bin bitwarden-bin breeze-red-cursor-theme
 #paru -S --needed --noconfirm breeze-red-cursor-theme chaotic-mirrorlist chaotic-keyring gimagereader
 
+# youtube-viewer
+gpg2 --keyserver keyserver.ubuntu.com --receive-keys ABB8BBAA2E279767774149B7D0A443C703A3A056
 
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 

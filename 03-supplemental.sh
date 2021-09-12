@@ -74,6 +74,7 @@ libva-intel-driver
 libva-mesa-driver
 libvirt
 lm_sensors
+lsof
 lxappearance-gtk3
 mc
 mediathek
