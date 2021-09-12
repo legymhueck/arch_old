@@ -25,14 +25,16 @@ editor 0" > /boot/loader/loader.conf
 
 echo "title ArchLinux
 linux /vmlinuz-linux
+initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options root=/dev/sda2 rootflags=subvol=@ quiet rw" > /boot/loader/entries/arch.conf
+options cryptdevice=/dev/sda2:arch root=/dev/mapper/arch rootflags=subvol=@ quiet nowatchdog lang=de locale=de_DE.UTF-8 rw" > /boot/loader/entries/arch.conf
+# cryptdevice=UUID=[UUID von /dev/sda2]
 
 systemctl enable systemd-homed
 systemctl enable acpid
-# systemctl enable NetworkManager
-systemctl enable systemd-networkd
-2systemctl enable systemd-resolved
+systemctl enable NetworkManager
+#systemctl enable systemd-networkd
+#systemctl enable systemd-resolved
 # avahi-daemon
 
 # sed -i '/%wheel ALL=(ALL) ALL/s/^#//g' /etc/sudoers
@@ -45,15 +47,15 @@ echo "tmpfs                                           /tmp                   tmp
 #tmpfs                                           /home/michael/.cache   tmpfs   rw,nodev,nosuid 0  0
 " >> /etc/fstab
 
-echo "[Match]
-Name=en*
+#echo "[Match]
+#Name=en*
 
-[Network]
-DHCP=yes
+#[Network]
+#DHCP=yes
 ##Address=192.168.2.11/24
 #Gateway=192.168.2.1
 #DNS=192.168.2.3
-> /etc/systemd/network/20-wired.network
+#> /etc/systemd/network/20-wired.network
 
 #ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 

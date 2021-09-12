@@ -11,3 +11,4 @@ breeze-red-cursor-theme
 youtube-viewer
 speedometer
 vdhcoapp
+visual-studio-code

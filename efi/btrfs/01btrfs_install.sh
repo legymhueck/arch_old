@@ -18,7 +18,8 @@ mount -o ssd,compress=zstd:1,noatime,discard=async,subvol=@var /dev/sda2 /mnt/va
 mount -o ssd,compress=zstd:1,noatime,discard=async,subvol=@home /dev/sda2 /mnt/home
 mount /dev/sda1 /mnt/boot
 
-pacstrap /mnt base base-devel linux linux-headers linux-firmware efibootmgr sudo vim btrfs-progs xdg-user-dirs git acpid polkit networkmanager systemd-resolvconf
+pacstrap /mnt base base-devel linux linux-headers linux-firmware efibootmgr sudo vim btrfs-progs xdg-user-dirs git acpid polkit networkmanager intel-ucode
+# systemd-resolvconf
 # nss-mdns
 
 genfstab -U /mnt >> /mnt/etc/fstab

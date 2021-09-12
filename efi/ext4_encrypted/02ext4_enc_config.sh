@@ -26,7 +26,7 @@ echo "title ArchLinux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options root=/dev/sda2 quiet nowatchdog rw lang=de locale=de_DE.UTF-8" > /boot/loader/entries/arch.conf
+options cryptdevice=/dev/sda2:arch root=/dev/mapper/arch quiet nowatchdog rw lang=de locale=de_DE.UTF-8" > /boot/loader/entries/arch.conf
 
 systemctl enable NetworkManager
 systemctl enable systemd-homed
