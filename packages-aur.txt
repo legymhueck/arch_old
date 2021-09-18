@@ -12,3 +12,5 @@ youtube-viewer
 speedometer
 vdhcoapp
 visual-studio-code-bin
+typora
+mailspring

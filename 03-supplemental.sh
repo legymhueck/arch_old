@@ -31,7 +31,7 @@ cups-pdf
 discord
 dmidecode
 dnsmasq
-dnsmasq
+dunst
 doublecmd-gtk2
 epdfview
 evince
@@ -79,6 +79,7 @@ lxappearance-gtk3
 mc
 mediathek
 mpv
+mupdf
 network-manager-applet
 nm-connection-editor
 notepadqq

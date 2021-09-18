@@ -27,9 +27,9 @@ echo "title ArchLinux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options root=/dev/sda2 rootflags=subvol=@ quiet nowatchdog lang=de locale=de_DE.UTF-8 rw" > /boot/loader/entries/arch.conf
+options cryptdevice=/dev/sda2 root=/dev/mapper/arch rootflags=subvol=@ quiet nowatchdog lang=de locale=de_DE.UTF-8 rw" > /boot/loader/entries/arch.conf
 
-systemctl enable systemd-homed
+#systemctl enable systemd-homed
 systemctl enable acpid
 systemctl enable NetworkManager
 #systemctl enable systemd-networkd
@@ -59,6 +59,7 @@ echo "tmpfs                                           /tmp                   tmp
 #ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 # base udev block keymap keyboard autodetect modconf encrypt filesystems
+
 exit
 umount -R /mnt
 
