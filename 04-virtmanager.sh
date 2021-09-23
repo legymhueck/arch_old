@@ -1,8 +1,13 @@
 #!/bin/bash
 sudo pacman -S --needed qemu libvirt virt-manager ebtables dnsmasq bridge-utils dmidecode ovmf qemu-arch-extra dnsmasq openbsd-netcat screen virt-viewer virt-install
 #sudo systemctl enable libvirtd
-#sudo gpasswd -a michael libvirt
-#sudo gpasswd -a michael kvm
+sudo gpasswd -a michael libvirt
+sudo gpasswd -a michael kvm
+
+sudo vim /etc/libvirt/libvirtd.conf
+# line 81: unix_sock_group = "libvirt"
+# uncomment line 104: unix_sock_rw_perms = "0770"
+
 
 #sudo systemctl restart --now libvirtd
 #sudo virsh net-autostart default
