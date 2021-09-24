@@ -3,10 +3,29 @@
 # Language
 setxkbmap de &
 
+# Environment variables set everywhere
+export PATH="$PATH:$HOME/.config/dwmblocks/scripts"
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export BROWSER="brave"
+export PDF="mupdf"
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT=MToolkit
+export PATH="${PATH}:${HOME}/.local/bin"
+export PATH="${PATH}:/$HOME/.config/scripts"
+
+# For QT Themes
+#export QT_QPA_PLATFORMTHEME=qt5ct
+
+# XDG Paths
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+
 #.Xresources
-userresources=$HOME/.Xresources
-sysresources=/etc/X11/xinit/.Xresources
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+#userresources=$HOME/.Xresources
+#sysresources=/etc/X11/xinit/.Xresources
+#[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 # Java applications
 wmname LG3D
