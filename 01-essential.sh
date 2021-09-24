@@ -56,6 +56,8 @@ libpipewire02
 libsecret
 libxft
 libxinerama
+lightdm
+lightdm-gtk-greeter
 linux-firmware
 lm_sensors
 lxappearance-gtk3

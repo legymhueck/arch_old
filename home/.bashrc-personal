@@ -156,6 +156,3 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-#if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-#	  exec startx
-#fi

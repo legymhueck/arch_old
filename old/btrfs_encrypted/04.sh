@@ -60,9 +60,7 @@ echo "tmpfs                                           /tmp                   tmp
 #ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 # base udev block keymap keyboard autodetect modconf encrypt filesystems
-groupadd -r autologin
-groupadd -r libvirt
-useradd -m -u 60102 -g users -G wheel,audio,video,disk,storage,optical,scanner,rfkill,input,libvirt,kvm,autologin -s /bin/bash michael
 
 exit
 umount -R /mnt
+

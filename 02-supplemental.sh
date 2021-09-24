@@ -17,7 +17,6 @@ func_install() {
 }
 
 list=(
-alacritty
 aria2
 aspell
 aspell-de

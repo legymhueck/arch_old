@@ -1,5 +1,5 @@
-#! /bin/bash 
+#! /bin/sh
 
-dte="$(date +"%a, %d %B %H:%M%p"| sed 's/  / /g')"
+dte="$(date +"%a, %d %B %H:%M"| sed 's/  / /g')"
 # dte="$(date +"%a, %B %d %H:%M%p"| sed 's/  / /g')"
 echo -e "$dte"
