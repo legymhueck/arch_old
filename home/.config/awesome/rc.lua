@@ -277,6 +277,8 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("brave") end,
               {description = "open brave browser", group = "launcher"}),
+    awful.key({ modkey, "Shift" }, "Return", function () awful.util.spawn("doublecmd") end,
+              {description = "open brave browser", group = "launcher"}),              
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
@@ -567,5 +569,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart
--- awful.spawn.with_shell("brave")
 awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/.config/wallpapers")
