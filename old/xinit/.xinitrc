@@ -3,6 +3,9 @@
 # Language
 setxkbmap de &
 
+# Gnome Keyring
+gnome-keyring-daemon -r -d &
+
 #.Xresources
 userresources=$HOME/.Xresources
 sysresources=/etc/X11/xinit/.Xresources
