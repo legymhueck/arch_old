@@ -104,7 +104,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
--- mykeyboardlayout = awful.widget.keyboardlayout()
+--mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -211,7 +211,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            -- mykeyboardlayout,
+            --mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -274,12 +274,53 @@ globalkeys = gears.table.join(
         end,
         {description = "go back", group = "client"}),
 
+
+    -- Media Keys
+    -- awful.key({ }, "XF86XK_AudioMute", function () awful.spawn.with_shell("/usr/bin/pactl set-sink-mute 0 toggle") end),
+    -- awful.key({ }, "XF86XK_AudioRaiseVolume", function () awful.spawn.with_shell("/usr/bin/amixer -q sset Master 5%+") end),
+    -- awful.key({ }, "XF86XK_AudioLowerVolume", function () awful.spawn.with_shell("/usr/bin/amixer -q sset Master 5%-") end),
+    -- awful.key({ }, "XF86XK_MonBrightnessUp", function () awful.spawn.with_shell("brightnessctl --device=smc::kbd_backlight set +20") end),
+    -- awful.key({ }, "XF86XK_MonBrightnessDown", function () awful.spawn.with_shell("brightnessctl --device=smc::kbd_backlight set 20-") end),
+    -- awful.key({ }, "XF86XK_KbdBrightnessUp", function () awful.spawn.with_shell("xbacklight -inc 10") end),
+    -- awful.key({ }, "XF86XK_KbdBrightnessDown", function () awful.spawn.with_shell("xbacklight -dec 10") end),
+
+   -- Volume Keys
+   awful.key({}, "XF86AudioLowerVolume", function ()
+    awful.util.spawn("amixer -q -D pulse sset Master 5%-", false) end),
+  awful.key({}, "XF86AudioRaiseVolume", function ()
+    awful.util.spawn("amixer -q -D pulse sset Master 5%+", false) end),
+  awful.key({}, "XF86AudioMute", function ()
+    awful.util.spawn("amixer -D pulse set Master 1+ toggle", false) end),
+
+  -- Monitor Brightness
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("xbacklight -dec 10") end),
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("xbacklight -inc 10") end),
+
+  -- Keyboard Brightness
+    awful.key({}, "XF86XK_KbdBrightnessUp", function ()
+        awful.util.spawn("brightnessctl --device=smc::kbd_backlight set +20") end),
+  awful.key({}, "XF86XK_KbdBrightnessDown", function ()
+    awful.util.spawn("brightnessctl set 20-") end), 
+
+  -- Media Keys
+  awful.key({}, "XF86AudioPlay", function()
+    awful.util.spawn("playerctl play-pause", false) end),
+  awful.key({}, "XF86AudioNext", function()
+    awful.util.spawn("playerctl next", false) end),
+  awful.key({}, "XF86AudioPrev", function()
+    awful.util.spawn("playerctl previous", false) end),
+    
+    -- Poweroff
+    awful.key({ modkey, "Shift", "Control" }, "x", function () awful.util.spawn("systemctl poweroff") end,
+              {description = "power off the system", group = "launcher"}),
     -- Standard program
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("brave") end,
               {description = "open brave browser", group = "launcher"}),
-    awful.key({ modkey, "Shift" }, "Return", function () awful.util.spawn("doublecmd") end,
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.util.spawn("doublecmd") end,
               {description = "open brave browser", group = "launcher"}),
-    awful.key({ modkey,         }, "d", function () awful.util.spawn("rofi -modi drun -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons -drun-icon-theme Arc-X-D -font 'Droid Sans Regular 10'") end,
+    awful.key({ modkey,           }, "d", function () awful.util.spawn("rofi -modi drun -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons -drun-icon-theme Arc-X-D -font 'Droid Sans Regular 10'") end,
               {description = "dmenu", group = "launcher"}),          
               
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
