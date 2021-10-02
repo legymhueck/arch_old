@@ -104,7 +104,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -150,24 +150,24 @@ local tasklist_buttons = gears.table.join(
                                               awful.client.focus.byidx(-1)
                                           end))
 
-local function set_wallpaper(s)
+--local function set_wallpaper(s)
     -- Wallpaper
-    if beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
+--    if beautiful.wallpaper then
+--        local wallpaper = beautiful.wallpaper
         -- If wallpaper is a function, call it with the screen
-        if type(wallpaper) == "function" then
-            wallpaper = wallpaper(s)
-        end
-        gears.wallpaper.maximized(wallpaper, s, true)
-    end
-end
+--        if type(wallpaper) == "function" then
+--            wallpaper = wallpaper(s)
+--        end
+--        gears.wallpaper.maximized(wallpaper, s, true)
+--    end
+--end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
+--screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
-    set_wallpaper(s)
+--    set_wallpaper(s)
 
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
@@ -211,7 +211,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            -- mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -278,7 +278,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("brave") end,
               {description = "open brave browser", group = "launcher"}),
     awful.key({ modkey, "Shift" }, "Return", function () awful.util.spawn("doublecmd") end,
-              {description = "open brave browser", group = "launcher"}),              
+              {description = "open brave browser", group = "launcher"}),
+    awful.key({ modkey,         }, "d", function () awful.util.spawn("rofi -modi drun -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons -drun-icon-theme Arc-X-D -font 'Droid Sans Regular 10'") end,
+              {description = "dmenu", group = "launcher"}),          
+              
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
@@ -330,7 +333,7 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "d", function() menubar.show() end,
+    awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
 
@@ -569,4 +572,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart
-awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/.config/wallpapers")
+--awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/.config/wallpapers")
