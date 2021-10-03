@@ -27,7 +27,7 @@ echo "title ArchLinux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options cryptdevice=/dev/sda2 root=/dev/mapper/arch rootflags=subvol=@ quiet nowatchdog console-mode max rw" > /boot/loader/entries/arch.conf
+options cryptdevice=/dev/sda2 root=/dev/mapper/arch rootflags=subvol=@ quiet nowatchdog console-mode max intel_pstate=no_hwp rw" > /boot/loader/entries/arch.conf
 # lang=de locale=de_DE.UTF-8
 
 #systemctl enable systemd-homed
