@@ -12,7 +12,7 @@ export PDF="mupdf"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 export PATH="${PATH}:${HOME}/.local/bin"
-export PATH="${PATH}:/$HOME/.config/scripts"
+#export PATH="${PATH}:/$HOME/.config/scripts"
 
 # For QT Themes
 #export QT_QPA_PLATFORMTHEME=qt5ct
