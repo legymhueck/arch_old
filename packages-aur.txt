@@ -6,7 +6,7 @@ ttf-ms-fonts
 liberica-jdk-11-full-bin
 brave-bin
 simplenote-electron-bin
-bitwarden-bin
+bitwarden
 breeze-red-cursor-theme
 youtube-viewer
 speedometer

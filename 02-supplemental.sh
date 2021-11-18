@@ -25,6 +25,7 @@ list=(
     aspell-de
     aspell-en
     audacity
+    bless
     bridge-utils
     broadcom-wl
     catfish
@@ -103,6 +104,7 @@ list=(
     simple-scan
     simplescreenrecorder
     splix gutenprint
+    swtpm
     sxiv
     system-config-printer
     unzip
