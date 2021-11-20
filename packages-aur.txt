@@ -7,7 +7,6 @@ liberica-jdk-11-full-bin
 brave-bin
 simplenote-electron-bin
 bitwarden
-breeze-red-cursor-theme
 youtube-viewer
 speedometer
 vdhcoapp

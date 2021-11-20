@@ -27,8 +27,10 @@ echo "title ArchLinux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options cryptdevice=/dev/sda2 root=/dev/mapper/arch rootflags=subvol=@ quiet nowatchdog console-mode max intel_pstate=no_hwp rw" > /boot/loader/entries/arch.conf
+options cryptdevice=/dev/sda2:arch root=/dev/mapper/arch rootflags=subvol=@ quiet nowatchdog console-mode max intel_pstate=no_hwp rw" > /boot/loader/entries/arch.conf
 # lang=de locale=de_DE.UTF-8
+
+# sed -i '/HOOKS=(base udev block keyboard keymap autodetect modconf encrypt filesystems)/s/^HOOKS/Michael/g' /home/michael/mkinitcpio.conf
 
 #systemctl enable systemd-homed
 systemctl enable acpid
@@ -55,13 +57,32 @@ echo "tmpfs                                           /tmp                   tmp
 ##Address=192.168.2.11/24
 #Gateway=192.168.2.1
 #DNS=192.168.2.3
-#> /etc/systemd/network/20-wired.network
+#" > /etc/systemd/network/20-wired.network
 
 #ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 # base udev block keymap keyboard autodetect modconf encrypt filesystems
-groupadd -r autologin
+
+echo "LANG=de_DE.UTF-8
+LANGUAGE=de_DE
+LC_CTYPE=de_DE.UTF-8
+LC_NUMERIC=de_DE.UTF-8
+LC_TIME=de_DE.UTF-8
+LC_COLLATE=de_DE.UTF-8
+LC_MONETARY=de_DE.UTF-8
+LC_MESSAGES=de_DE.UTF-8
+LC_PAPER=de_DE.UTF-8
+LC_NAME=de_DE.UTF-8
+LC_ADDRESS=de_DE.UTF-8
+LC_TELEPHONE=de_DE.UTF-8
+LC_MEASUREMENT=de_DE.UTF-8
+LC_IDENTIFICATION=de_DE.UTF-8
+LC_ALL=
+" > /etc/locale.conf
+
 groupadd -r libvirt
+groupadd -r kvm
+groupadd -r autologin
 useradd -m -u 60102 -g users -G wheel,audio,video,disk,storage,optical,scanner,rfkill,input,libvirt,kvm,autologin -s /bin/bash michael
 
 exit
