@@ -1,5 +1,10 @@
 #!/bin/bash
 #set -e
+mkdir -p /home/$(whoami)/Downloads/git
+mkdir -p /home/$(whoami)/mount/usb{1,2,3,4,5}
+mkdir -p /home/$(whoami)/mount/nvme
+mkdir -p /home/$(whoami)/mount/256
+mkdir -p /home/$(whoami)/mount/v256
 
 func_install() {
   if pacman -Qi "$1" &>/dev/null; then
