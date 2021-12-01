@@ -107,6 +107,8 @@ list=(
     swtpm
     sxiv
     system-config-printer
+    tesseract
+    tesseract-data-eng
     unzip
     upower
     veracrypt
