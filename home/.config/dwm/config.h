@@ -1,12 +1,12 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
-static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const unsigned int borderpx       =  1;   /* border pixel of windows */
+static const unsigned int snap           = 32;   /* snap pixel */
+static const unsigned int systraypinning =  0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayspacing =  2;   /* systray spacing */
+static const int systraypinningfailfirst =  1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const int showsystray             =  1;   /* 0 means no systray */
 
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -17,11 +17,12 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-static const char col_perlrosa[]        = "#b24c43";
+static const char col_perlrosa[]    = "#b24c43";
+static const char col_red[]         = "#870a25";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-    [SchemeSel]  = { col_gray4, col_perlrosa,  col_perlrosa  },
+    [SchemeSel]  = { col_gray4, col_red,  col_red  },
 };
 
 /* tagging */
@@ -35,20 +36,20 @@ static const Rule rules[] = {
     /* class                instance    title       tags mask     isfloating   monitor */
     { "Gimp",               NULL,       NULL,       0,            0,           -1 },
     { "Firefox",            NULL,       NULL,       1 << 8,       0,           -1 },
-    { "Code",               NULL,       NULL,       1 << 3,       0,           -1 },
-    { "libreoffice-writer", NULL,       NULL,       1 << 4,       0,           -1 },
+    /* { "Code",               NULL,       NULL,       1 << 3,       0,           -1 },*/
+    /*{ "libreoffice-writer", NULL,       NULL,       1 << 4,       0,           -1 },*/
 /*    { "Brave-browser",      NULL,       NULL,       1 << 2,       0,           -1 },*/
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.65; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    { "[M]",      monocle },
     { "[T]",      tile },    /* first entry is default */
+    { "[M]",      monocle },
     { "[F]",      NULL },    /* no layout function means floating behavior */
 };
 
@@ -67,8 +68,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *roficmd[] = { "rofi", "-modi", "drun", "-show", "drun", "-line-padding", "4", "-columns", "2", "-padding", "50", "-hide-scrollbar", "-show-icons", "-drun-icon-theme", "Arc-X-D", "-font", "Droid Sans Regular 10", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+static const char *roficmd[] = { "rofi", "-modi", "drun", "-show", "drun", "-line-padding", "4", "-columns", "2", "-padding", "50", "-hide-scrollbar", "-show-icons", NULL };
+/* static const char *roficmd[] = { "rofi", "-modi", "drun", "-show", "drun", "-line-padding", "4", "-columns", "2", "-padding", "50", "-hide-scrollbar", "-show-icons", "-drun-icon-theme", "Arc-X-D", "-font", "Droid Sans Regular 10", NULL }; */
 static const char *betterlockcmd[]  = { "betterlockscreen", "--lock", NULL };
 static const char *poweroffcmd[] = { "systemctl", "poweroff", NULL };
 static const char *suspendcmd[] = { "systemctl", "suspend", NULL };
@@ -137,8 +139,8 @@ static Key keys[] = {
     { 0,                            XF86XK_KbdBrightnessDown,   spawn,          {.v = downKeyBright } },
 
     /* Layouts*/
-    { MODKEY|ShiftMask,             XK_m,                       setlayout,      {.v = &layouts[0]} },
-    { MODKEY|ShiftMask,             XK_t,                       setlayout,      {.v = &layouts[1]} },
+    { MODKEY|ShiftMask,             XK_t,                       setlayout,      {.v = &layouts[0]} },
+    { MODKEY|ShiftMask,             XK_m,                       setlayout,      {.v = &layouts[1]} },
     { MODKEY|ShiftMask,             XK_f,                       setlayout,      {.v = &layouts[2]} },
     
     
@@ -146,18 +148,23 @@ static Key keys[] = {
     { MODKEY,                       XK_comma,                   shiftview,      { .i = -1 } },
     { MODKEY,                       XK_period,                  shiftview,      { .i = 1 } },
     { MODKEY,                       XK_b,                       togglebar,      {0} }, /* bar on / off */
-    { MODKEY|ShiftMask,             XK_Right,                   focusstack,     {.i = +1 } },
-    { MODKEY|ShiftMask,             XK_Left,                    focusstack,     {.i = -1 } },
-    { MODKEY,                       XK_h,                       setmfact,       {.f = -0.05} },
-    { MODKEY,                       XK_l,                       setmfact,       {.f = +0.05} },
-    { MODKEY|ShiftMask,             XK_Return,                  zoom,           {0} }, /* focus master window */
+    
+    { MODKEY,                       XK_Right,                   focusstack,     {.i = +1 } },
+    { MODKEY,                       XK_Left,                    focusstack,     {.i = -1 } },
+    
+    /* Resize window*/
+    { MODKEY|ShiftMask,             XK_Left,                    setmfact,       {.f = -0.05} },
+    { MODKEY|ShiftMask,             XK_Right,                   setmfact,       {.f = +0.05} },
+    
+    { MODKEY|ControlMask|ShiftMask, XK_Left,                    focusmon,       {.i = -1 } },
+    { MODKEY|ControlMask|ShiftMask, XK_Right,                   focusmon,       {.i = +1 } },
+    
+    { MODKEY|ControlMask|ShiftMask, XK_Return,                  zoom,           {0} }, /* focus master window */
     { MODKEY,                       XK_Tab,                     view,           {0} },
     { MODKEY,                       XK_q,                       killclient,     {0} }, /* kill a window */
     { MODKEY,                       XK_space,                   togglefloating, {0} },
     { MODKEY,                       XK_0,                       view,           {.ui = ~0 } },
     { MODKEY|ShiftMask,             XK_0,                       tag,            {.ui = ~0 } },
-    { MODKEY,                       XK_Left,                    focusmon,       {.i = -1 } },
-    { MODKEY,                       XK_Right,                   focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,             XK_comma,                   tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,             XK_period,                  tagmon,         {.i = +1 } },
 
