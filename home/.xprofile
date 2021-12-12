@@ -1,6 +1,12 @@
 #!/bin/sh
 
 # Language
+
+# Use a better mouse pointer
+xsetroot -cursor_name left_ptr
+
+# Use the German keyboard layout
+# setxkbmap -layout de
 setxkbmap de &
 
 # Environment variables set everywhere
