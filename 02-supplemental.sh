@@ -116,6 +116,7 @@ list=(
     virt-viewer
     vlc
     wpa_supplicant
+    xournalpp
     xpdf
     youtube-dl
 )

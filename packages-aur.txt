@@ -1,3 +1,4 @@
+marktext
 ventoy-bin
 filius
 jetbrains-toolbox
@@ -11,5 +12,5 @@ youtube-viewer
 speedometer
 vdhcoapp
 visual-studio-code-bin
-typora
+typora-free
 mailspring
