@@ -78,6 +78,7 @@ pipewire-jack
 pipewire-media-session
 pipewire-pulse
 playerctl
+plocate
 polkit-gnome
 powerline
 powerline-fonts
@@ -127,3 +128,5 @@ for name in "${list[@]}"; do
   tput sgr0 # colors
   func_install "$name"
 done
+
+sudo systemctl enable plocate-updatedb.timer
