@@ -81,7 +81,7 @@ alias vi='nvim'
 alias virt_connect='virt-viewer --connect qemu:///system --wait'
 alias vl='sudo virsh list --all'
 alias vs='sudo virsh start '
-alias vv='sudo virt-viewer -f '
+alias vv='sudo virt-viewer -f --attach '
 alias wget='wget -c'
 
 # Systemctl
